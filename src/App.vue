@@ -1,4 +1,5 @@
 <template>
+  <MockBanner />
   <AppLayout v-if="!isStandalone">
     <router-view />
   </AppLayout>
@@ -9,6 +10,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import AppLayout from './components/layout/AppLayout.vue'
+import MockBanner from './components/MockBanner.vue'
 
 const route = useRoute()
 const isStandalone = computed(() => route.meta.standalone)
