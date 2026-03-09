@@ -9,7 +9,14 @@
     <!-- Map -->
     <div class="card">
       <h3><Map :size="18" :stroke-width="1.5" /> Spatial Coverage</h3>
-      <div class="map-preview"><MapPin :size="14" :stroke-width="1.5" /> Brabrand, Aarhus</div>
+      <div class="map-container">
+        <iframe
+          class="map-iframe"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=10.09%2C56.14%2C10.17%2C56.17&layer=mapnik&marker=56.155%2C10.13"
+          loading="lazy"
+          title="Map showing Brabrand, Aarhus"
+        ></iframe>
+      </div>
     </div>
 
     <!-- Distributions -->
@@ -38,7 +45,7 @@
 </template>
 
 <script setup>
-import { FileText, Map, MapPin, Package, ArrowDown } from 'lucide-vue-next'
+import { FileText, Map, Package, ArrowDown } from 'lucide-vue-next'
 
 const distributions = [
   { name: 'brabrand-solar-3d-model.zip', format: 'ZIP', formatClass: 'zip', size: '245 MB' },
@@ -59,26 +66,16 @@ h3 {
   gap: 8px;
 }
 
-.map-preview {
-  background: linear-gradient(135deg, #d4e8d0, #c8dce8, #e8dcc8);
+.map-container {
   border-radius: var(--radius-md);
-  height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-light);
-  font-size: 14px;
-  position: relative;
   overflow: hidden;
+  height: 180px;
 }
 
-.map-preview::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(255, 255, 255, 0.3) 20px, rgba(255, 255, 255, 0.3) 21px),
-    repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(255, 255, 255, 0.3) 20px, rgba(255, 255, 255, 0.3) 21px);
+.map-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 .dist-table {

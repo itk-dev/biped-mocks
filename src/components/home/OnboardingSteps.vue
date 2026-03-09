@@ -3,28 +3,30 @@
     <div class="onboarding-header">
       <div class="onboarding-icon"><Hand :size="28" :stroke-width="1.5" /></div>
       <h2>Welcome to BIPED Civora</h2>
-      <p class="subtitle">Let us show you around! This quick tour will help you discover the platform's key features in just a few steps.</p>
+      <p class="subtitle">Let us show you around! Based on your interests, these steps will help you discover the platform's key features.</p>
     </div>
     <div class="steps">
-      <div v-for="(step, i) in steps" :key="i" class="step-card">
-        <div class="step-number" :class="{ active: i === 0 }">{{ i + 1 }}</div>
+      <component
+        v-for="(step, i) in steps"
+        :key="i"
+        :is="step.to ? 'router-link' : 'a'"
+        :to="step.to || undefined"
+        :href="step.to ? undefined : step.href"
+        class="step-card"
+      >
+        <div class="step-number">
+          <component :is="step.icon" :size="18" :stroke-width="1.5" />
+        </div>
         <h4>{{ step.title }}</h4>
         <p>{{ step.description }}</p>
-        <component
-          :is="step.to ? 'router-link' : 'a'"
-          :to="step.to || undefined"
-          :href="step.to ? undefined : step.href"
-          class="step-link"
-        >
-          {{ step.linkText }} →
-        </component>
-      </div>
+        <span class="step-link">{{ step.linkText }} →</span>
+      </component>
     </div>
   </section>
 </template>
 
 <script setup>
-import { Hand } from 'lucide-vue-next'
+import { Hand, Globe, Database, LayoutDashboard, Lightbulb } from 'lucide-vue-next'
 
 const steps = [
   {
@@ -32,24 +34,28 @@ const steps = [
     description: 'Navigate the 3D virtual model of Aarhus and discover solar energy data across the city.',
     linkText: 'View Solar in the Twin',
     href: '#',
+    icon: Globe,
   },
   {
     title: 'Browse the Data Catalog',
     description: 'Search and access open datasets, including solar irradiance and photovoltaic performance data.',
     linkText: 'Explore Solar Data',
     to: '/dataset/brabrand-solar',
+    icon: Database,
   },
   {
     title: 'View Dashboards',
     description: 'Interactive overviews of key solar energy metrics and district performance indicators.',
     linkText: 'See Dashboards',
     to: '/storytelling',
+    icon: LayoutDashboard,
   },
   {
     title: 'Find your use case',
     description: 'Discover how BIPED solar data supports research, planning, and community energy projects.',
     linkText: 'Get Started',
     href: '#',
+    icon: Lightbulb,
   },
 ]
 </script>
@@ -98,11 +104,15 @@ const steps = [
 }
 
 .step-card {
+  display: block;
   text-align: center;
   padding: 24px 16px;
   border: 1px solid var(--color-border-lighter);
   border-radius: var(--radius-lg);
   transition: border-color 0.15s, box-shadow 0.15s;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .step-card:hover {
@@ -120,11 +130,6 @@ const steps = [
   font-size: 14px;
   font-weight: 700;
   margin: 0 auto 12px;
-  background: var(--color-border-faintest);
-  color: var(--color-text-muted);
-}
-
-.step-number.active {
   background: var(--color-teal);
   color: var(--color-white);
 }

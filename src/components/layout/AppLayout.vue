@@ -20,7 +20,7 @@ const sidebarOpen = ref(false)
 <style scoped>
 .main-content {
   margin-left: var(--sidebar-width);
-  padding-top: var(--header-height);
+  padding-top: calc(var(--banner-height) + var(--header-height));
   min-height: 100vh;
 }
 

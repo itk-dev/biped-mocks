@@ -1,47 +1,114 @@
 <template>
   <div class="storytelling-page">
     <StoryHero />
-    <StoryProgress :active-index="1" />
-    <StorySection
-      label="Chapter 2"
-      title="Understanding Brabrand's Energy Baseline"
-      narrative="Before planning a Positive Energy District, we need to understand how energy is currently consumed. Using building data from GeoDanmark and energy consumption records, we mapped the district's energy profile across residential, commercial, and public buildings."
-    >
-      <StatRow :stats="stats" />
-      <VizContainer />
-      <InsightCallout>
-        Residential buildings account for 42% of energy consumption but only 12% of the district's solar capacity. This gap represents the largest opportunity for PED transformation.
-      </InsightCallout>
+    <StoryProgress v-model:active-index="activeIndex" />
 
-      <p class="narrative">The data reveals a clear pattern: older residential blocks built between 1960-1980 consume 2.3x more energy per square meter than newer buildings. Retrofitting these structures is central to achieving positive energy balance.</p>
+    <div ref="chapterContent">
+      <!-- Chapter 1 — The Vision -->
+      <template v-if="activeIndex === 0">
+        <StorySection
+          label="Chapter 1"
+          title="Brabrand's Positive Energy District Vision"
+          narrative="Brabrand is at the forefront of Europe's Positive Energy District movement. The vision: a district that produces more renewable energy than it consumes, while improving quality of life for all residents."
+        >
+          <StatRow :stats="ch1Stats" />
+          <InsightCallout>
+            A Positive Energy District (PED) is an urban area that generates more renewable energy than it consumes annually, while ensuring high quality of life and affordable energy for all residents. Brabrand aims to become Denmark's first fully realized PED by 2026.
+          </InsightCallout>
+          <StoryNav :active-index="activeIndex" :steps="stepNames" @navigate="goTo" />
+        </StorySection>
+      </template>
 
-      <!-- Heatmap -->
-      <div class="map-viz">
-        <div class="heatmap-dots">
-          <div v-for="(dot, i) in heatDots" :key="i" class="heat-dot" :style="dot"></div>
-        </div>
-        <div class="map-overlay">
-          <div class="big-number">Brabrand</div>
-          <div class="big-label">Energy consumption heatmap — kWh/m² per building</div>
-        </div>
-      </div>
+      <!-- Chapter 2 — Energy Baseline (existing content) -->
+      <template v-else-if="activeIndex === 1">
+        <StorySection
+          label="Chapter 2"
+          title="Understanding Brabrand's Energy Baseline"
+          narrative="Before planning a Positive Energy District, we need to understand how energy is currently consumed. Using building data from GeoDanmark and energy consumption records, we mapped the district's energy profile across residential, commercial, and public buildings."
+        >
+          <StatRow :stats="ch2Stats" />
+          <VizContainer />
+          <InsightCallout>
+            Residential buildings account for 42% of energy consumption but only 12% of the district's solar capacity. This gap represents the largest opportunity for PED transformation.
+          </InsightCallout>
 
-      <!-- Data source -->
-      <div class="data-source">
-        <span class="source-label">Data Source</span>
-        <a href="#">GeoDanmark Buildings Aarhus →</a>
-        <a href="#">INSPIRE Buildings →</a>
-        <a href="#">Brabrand 3D city model →</a>
-      </div>
+          <p class="narrative">The data reveals a clear pattern: older residential blocks built between 1960-1980 consume 2.3x more energy per square meter than newer buildings. Retrofitting these structures is central to achieving positive energy balance.</p>
 
-      <StoryTimeline />
-      <StoryNav />
-    </StorySection>
+          <!-- Heatmap -->
+          <div class="map-viz">
+            <div class="heatmap-dots">
+              <div v-for="(dot, i) in heatDots" :key="i" class="heat-dot" :style="dot"></div>
+            </div>
+            <div class="map-overlay">
+              <div class="big-number">Brabrand</div>
+              <div class="big-label">Energy consumption heatmap — kWh/m² per building</div>
+            </div>
+          </div>
+
+          <!-- Data source -->
+          <div class="data-source">
+            <span class="source-label">Data Source</span>
+            <a href="#">GeoDanmark Buildings Aarhus →</a>
+            <a href="#">INSPIRE Buildings →</a>
+            <a href="#">Brabrand 3D city model →</a>
+          </div>
+
+          <StoryNav :active-index="activeIndex" :steps="stepNames" @navigate="goTo" />
+        </StorySection>
+      </template>
+
+      <!-- Chapter 3 — Solar Potential -->
+      <template v-else-if="activeIndex === 2">
+        <StorySection
+          label="Chapter 3"
+          title="Mapping Solar Energy Across Every Rooftop"
+          narrative="Using 3D city model data and solar irradiance simulations, we analyzed the photovoltaic potential of every rooftop in Brabrand. The results reveal significant untapped capacity for distributed solar generation."
+        >
+          <StatRow :stats="ch3Stats" />
+          <InsightCallout>
+            With only 8% of suitable rooftop area currently utilized for solar PV, Brabrand has an estimated 89 MW of untapped photovoltaic potential — enough to meet 60% of the district's annual electricity demand from rooftop solar alone.
+          </InsightCallout>
+          <StoryNav :active-index="activeIndex" :steps="stepNames" @navigate="goTo" />
+        </StorySection>
+      </template>
+
+      <!-- Chapter 4 — Traffic & Mobility -->
+      <template v-else-if="activeIndex === 3">
+        <StorySection
+          label="Chapter 4"
+          title="Sustainable Mobility Patterns in Brabrand"
+          narrative="Transportation is a critical piece of the energy puzzle. By analyzing commuter data and mobility infrastructure, we mapped how Brabrand residents move — and where sustainable transport can reduce the district's carbon footprint."
+        >
+          <StatRow :stats="ch4Stats" />
+          <InsightCallout>
+            Brabrand's 34% cycling commute share is well above the national average, but EV charging infrastructure lags behind demand. Expanding the 12 public charging points to 50 could reduce transport emissions by an additional 22%.
+          </InsightCallout>
+          <StoryNav :active-index="activeIndex" :steps="stepNames" @navigate="goTo" />
+        </StorySection>
+      </template>
+
+      <!-- Chapter 5 — The Path Forward -->
+      <template v-else-if="activeIndex === 4">
+        <StorySection
+          label="Chapter 5"
+          title="From Data to Action"
+          narrative="The data tells a clear story: Brabrand has the resources, the infrastructure, and the community engagement to become a Positive Energy District. Here's the roadmap from insight to implementation."
+        >
+          <StoryTimeline />
+          <InsightCallout>
+            By combining rooftop solar expansion, deep energy renovation of 1960–1980 residential buildings, and sustainable mobility investments, Brabrand can achieve positive energy balance by Q4 2026 — producing 105% of its annual energy consumption from local renewable sources.
+          </InsightCallout>
+          <StoryNav :active-index="activeIndex" :steps="stepNames" @navigate="goTo" />
+        </StorySection>
+      </template>
+    </div>
+
     <StoryCta />
   </div>
 </template>
 
 <script setup>
+import { ref, nextTick } from 'vue'
 import StoryHero from '../components/storytelling/StoryHero.vue'
 import StoryProgress from '../components/storytelling/StoryProgress.vue'
 import StorySection from '../components/storytelling/StorySection.vue'
@@ -52,11 +119,51 @@ import StoryTimeline from '../components/storytelling/StoryTimeline.vue'
 import StoryNav from '../components/storytelling/StoryNav.vue'
 import StoryCta from '../components/storytelling/StoryCta.vue'
 
-const stats = [
+const activeIndex = ref(0)
+
+const stepNames = [
+  'The Vision',
+  'Energy Baseline',
+  'Solar Potential',
+  'Traffic & Mobility',
+  'The Path Forward',
+]
+
+const chapterContent = ref(null)
+
+function goTo(index) {
+  activeIndex.value = index
+  nextTick(() => {
+    chapterContent.value?.scrollIntoView({ behavior: 'smooth' })
+  })
+}
+
+const ch1Stats = [
+  { value: '2026', label: 'Target year' },
+  { value: '2.4<span>km²</span>', label: 'District area' },
+  { value: '4,823', label: 'Buildings' },
+  { value: '12,400', label: 'Community members' },
+]
+
+const ch2Stats = [
   { value: '4,823', label: 'Buildings analyzed' },
   { value: '187<span>GWh</span>', label: 'Annual energy consumption' },
   { value: '42%', label: 'Residential share' },
   { value: '-3.2%', label: 'Year-over-year change', change: '↓ Trending down' },
+]
+
+const ch3Stats = [
+  { value: '1,847', label: 'Suitable rooftops' },
+  { value: '89<span>MW</span>', label: 'PV potential' },
+  { value: '1,050', label: 'kWh/m² avg. irradiance' },
+  { value: '8%', label: 'Current utilization' },
+]
+
+const ch4Stats = [
+  { value: '8,200', label: 'Daily commuters' },
+  { value: '34%', label: 'Cycling share' },
+  { value: '12', label: 'EV charging points' },
+  { value: '14.2<span>kt</span>', label: 'Annual CO₂ from transport' },
 ]
 
 const heatDots = [

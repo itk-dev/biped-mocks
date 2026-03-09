@@ -1,5 +1,5 @@
 <template>
-  <div class="comments-section">
+  <div id="discussion" class="comments-section">
     <div class="comments-card">
       <div class="new-badge">NEW FEATURE</div>
 

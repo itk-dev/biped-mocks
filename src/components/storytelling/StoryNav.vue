@@ -1,10 +1,29 @@
 <template>
   <div class="story-nav">
-    <button class="nav-btn">← Previous: The Vision</button>
-    <span class="nav-position">2 of 5</span>
-    <button class="nav-btn primary">Next: Solar Potential →</button>
+    <button v-if="activeIndex > 0" class="nav-btn" @click="emit('navigate', activeIndex - 1)">
+      ← Previous: {{ steps[activeIndex - 1] }}
+    </button>
+    <span v-else></span>
+    <span class="nav-position">{{ activeIndex + 1 }} of {{ steps.length }}</span>
+    <button
+      v-if="activeIndex < steps.length - 1"
+      class="nav-btn primary"
+      @click="emit('navigate', activeIndex + 1)"
+    >
+      Next: {{ steps[activeIndex + 1] }} →
+    </button>
+    <span v-else></span>
   </div>
 </template>
+
+<script setup>
+defineProps({
+  activeIndex: { type: Number, required: true },
+  steps: { type: Array, required: true },
+})
+
+const emit = defineEmits(['navigate'])
+</script>
 
 <style scoped>
 .story-nav {

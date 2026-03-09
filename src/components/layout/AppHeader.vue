@@ -42,7 +42,7 @@ defineEmits(['toggle-sidebar'])
   padding: 0 32px;
   border-bottom: 1px solid var(--color-border);
   position: fixed;
-  top: 0;
+  top: var(--banner-height);
   left: 0;
   right: 0;
   z-index: 20;

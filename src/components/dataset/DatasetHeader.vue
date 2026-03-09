@@ -12,7 +12,7 @@
       <span><Calendar :size="14" :stroke-width="1.5" /> Updated: {{ updated }}</span>
       <span><Download :size="14" :stroke-width="1.5" /> {{ downloads }} downloads</span>
       <span><Eye :size="14" :stroke-width="1.5" /> {{ views }} views</span>
-      <span><MessageCircle :size="14" :stroke-width="1.5" /> {{ commentCount }} comments</span>
+      <a href="#discussion" class="comments-link" @click.prevent="scrollToDiscussion"><MessageCircle :size="14" :stroke-width="1.5" /> {{ commentCount }} comments</a>
     </div>
   </div>
 </template>
@@ -29,6 +29,10 @@ defineProps({
   views: [String, Number],
   commentCount: [String, Number],
 })
+
+function scrollToDiscussion() {
+  document.getElementById('discussion')?.scrollIntoView({ behavior: 'smooth' })
+}
 </script>
 
 <style scoped>
@@ -84,6 +88,17 @@ h1 {
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+.comments-link {
+  color: var(--color-teal);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.comments-link:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 767px) {

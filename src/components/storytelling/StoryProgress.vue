@@ -5,6 +5,7 @@
       :key="i"
       class="progress-step"
       :class="{ active: i === activeIndex, completed: i < activeIndex }"
+      @click="emit('update:activeIndex', i)"
     >
       <span class="step-num">
         <Check v-if="i < activeIndex" :size="14" :stroke-width="1.5" />
@@ -19,8 +20,10 @@
 import { Check } from 'lucide-vue-next'
 
 defineProps({
-  activeIndex: { type: Number, default: 1 },
+  activeIndex: { type: Number, default: 0 },
 })
+
+const emit = defineEmits(['update:activeIndex'])
 
 const steps = [
   'The Vision',
@@ -39,7 +42,7 @@ const steps = [
   display: flex;
   align-items: stretch;
   position: sticky;
-  top: var(--header-height);
+  top: calc(var(--banner-height) + var(--header-height));
   z-index: 5;
 }
 
