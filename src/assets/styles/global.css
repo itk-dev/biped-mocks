@@ -1,0 +1,116 @@
+@import './variables.css';
+
+/* Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: var(--color-bg);
+  color: var(--color-darkest);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Shared card */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+}
+
+.card h3 {
+  font-size: 15px;
+  color: var(--color-darkest);
+  margin-bottom: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--color-teal);
+  color: var(--color-white);
+  border: none;
+  padding: 12px 32px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover {
+  background: var(--color-mid);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text-light);
+  border: 1px solid var(--color-border);
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-text-muted);
+  color: var(--color-darkest);
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  margin-right: 6px;
+}
+
+.tag.energy {
+  background: var(--color-accent-green-bg);
+  color: var(--color-dark);
+}
+
+.tag.zip {
+  background: var(--color-accent-blue-bg);
+  color: var(--color-darkest);
+}
+
+.tag.open {
+  background: var(--color-accent-orange-bg);
+  color: var(--color-accent-orange);
+}
