@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- GitHub Actions workflow to auto-deploy to GitHub Pages on push to `main`
 - Registration page (`/register`) with standalone auth layout (no sidebar/nav shell)
 - Registration form with standard fields (name, email, password) and custom profile fields (category, role, organisation)
 - Standalone route meta support — routes with `meta.standalone` bypass the app shell
+
+### Changed
+
+- Set Vite `base` to `/biped-mocks/` for GitHub Pages subdirectory deployment
+- Switch Vue Router from history mode to hash mode for GitHub Pages compatibility
