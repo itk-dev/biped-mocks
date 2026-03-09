@@ -29,9 +29,9 @@ defineEmits(['close'])
 .sidebar {
   position: fixed;
   left: 0;
-  top: var(--header-height);
+  top: calc(var(--banner-height) + var(--header-height));
   width: var(--sidebar-width);
-  height: calc(100vh - var(--header-height));
+  height: calc(100vh - var(--banner-height) - var(--header-height));
   background: var(--color-white);
   border-right: 1px solid var(--color-border-light);
   display: flex;

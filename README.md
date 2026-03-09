@@ -1,5 +1,7 @@
 # BIPED Scaffold
 
+> **This repository is for mockup purposes only.** It contains a static UI prototype and is not the real BIPED application. Do not use it as a reference for production functionality or data.
+
 A Vue 3 single-page application for showcasing data about Positive Energy Districts in Aarhus, Denmark. Built with Vite.
 
 ## Prerequisites

@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- Mockup banner displayed on all pages to distinguish from the real application
+- Mockup disclaimer in README
+- Mockup banner displayed as a fixed bar above the header on all pages
 - `robots.txt` and `noindex` meta tag to prevent search engine indexing
 - GitHub Actions workflow to auto-deploy to GitHub Pages on push to `main`
 - Registration page (`/register`) with standalone auth layout (no sidebar/nav shell)

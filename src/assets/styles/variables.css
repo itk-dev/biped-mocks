@@ -33,6 +33,7 @@
   --font-primary: 'Sofia Sans', 'Inter', sans-serif;
 
   /* Layout */
+  --banner-height: 28px;
   --header-height: 72px;
   --sidebar-width: 72px;
 
