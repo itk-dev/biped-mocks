@@ -6,19 +6,19 @@
       <p class="subtitle">Let us show you around! This quick tour will help you discover the platform's key features in just a few steps.</p>
     </div>
     <div class="steps">
-      <div v-for="(step, i) in steps" :key="i" class="step-card">
+      <component
+        v-for="(step, i) in steps"
+        :key="i"
+        :is="step.to ? 'router-link' : 'a'"
+        :to="step.to || undefined"
+        :href="step.to ? undefined : step.href"
+        class="step-card"
+      >
         <div class="step-number" :class="{ active: i === 0 }">{{ i + 1 }}</div>
         <h4>{{ step.title }}</h4>
         <p>{{ step.description }}</p>
-        <component
-          :is="step.to ? 'router-link' : 'a'"
-          :to="step.to || undefined"
-          :href="step.to ? undefined : step.href"
-          class="step-link"
-        >
-          {{ step.linkText }} →
-        </component>
-      </div>
+        <span class="step-link">{{ step.linkText }} →</span>
+      </component>
     </div>
   </section>
 </template>
@@ -98,11 +98,15 @@ const steps = [
 }
 
 .step-card {
+  display: block;
   text-align: center;
   padding: 24px 16px;
   border: 1px solid var(--color-border-lighter);
   border-radius: var(--radius-lg);
   transition: border-color 0.15s, box-shadow 0.15s;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .step-card:hover {

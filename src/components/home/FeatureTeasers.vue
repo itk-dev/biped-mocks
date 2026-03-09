@@ -1,6 +1,6 @@
 <template>
   <section class="teasers">
-    <div class="teaser-card">
+    <router-link to="/storytelling" class="teaser-card">
       <div class="teaser-preview storytelling-preview">
         <div class="preview-label"><BookOpen :size="14" :stroke-width="1.5" /> Data Story</div>
         <div class="preview-title">Aarhus on the Road to Positive Energy</div>
@@ -8,10 +8,10 @@
       <div class="teaser-body">
         <h3>Data Storytelling</h3>
         <p>Explore how Brabrand is transforming its energy profile through smart building design, solar optimization, and community engagement — told through data.</p>
-        <router-link to="/storytelling" class="teaser-link">Read the story →</router-link>
+        <span class="teaser-link">Read the story →</span>
       </div>
-    </div>
-    <div class="teaser-card">
+    </router-link>
+    <router-link to="/dataset/brabrand-solar" class="teaser-card">
       <div class="teaser-preview dataset-preview">
         <div class="preview-tags">
           <span class="mini-tag">Energy</span>
@@ -23,9 +23,9 @@
       <div class="teaser-body">
         <h3>Dataset Commenting</h3>
         <p>Join the discussion on datasets. Ask questions, share insights, and collaborate with researchers and city planners directly on data pages.</p>
-        <router-link to="/dataset/brabrand-solar" class="teaser-link">View dataset →</router-link>
+        <span class="teaser-link">View dataset →</span>
       </div>
-    </div>
+    </router-link>
   </section>
 </template>
 
@@ -42,11 +42,14 @@ import { BookOpen } from 'lucide-vue-next'
 }
 
 .teaser-card {
+  display: block;
   background: var(--color-white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   overflow: hidden;
   transition: box-shadow 0.2s, transform 0.2s;
+  color: inherit;
+  text-decoration: none;
 }
 
 .teaser-card:hover {
