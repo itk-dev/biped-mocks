@@ -7,7 +7,7 @@
       <span><Calendar :size="14" :stroke-width="1.5" /> Published: February 2026</span>
       <span><User :size="14" :stroke-width="1.5" /> BIPED Consortium</span>
       <span><Clock :size="14" :stroke-width="1.5" /> 8 min read</span>
-      <span><BarChart3 :size="14" :stroke-width="1.5" /> 6 datasets referenced</span>
+      <router-link to="/dataset/brabrand-solar" class="datasets-link"><BarChart3 :size="14" :stroke-width="1.5" /> 6 datasets referenced</router-link>
     </div>
   </section>
 </template>
@@ -79,6 +79,17 @@ import { BookOpen, Calendar, User, Clock, BarChart3 } from 'lucide-vue-next'
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+.datasets-link {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.datasets-link:hover {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: underline;
 }
 
 @media (max-width: 767px) {
