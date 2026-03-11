@@ -1,29 +1,24 @@
 <template>
-  <nav class="story-progress">
+  <nav class="story-toc">
+    <span class="toc-heading">Contents</span>
     <button
       v-for="(step, i) in steps"
       :key="i"
-      class="progress-step"
-      :class="{ active: i === activeIndex, completed: i < activeIndex }"
-      @click="emit('update:activeIndex', i)"
+      class="toc-item"
+      :class="{ active: i === activeIndex }"
+      @click="scrollToSection(i)"
     >
-      <span class="step-num">
-        <Check v-if="i < activeIndex" :size="14" :stroke-width="1.5" />
-        <template v-else>{{ i + 1 }}</template>
-      </span>
-      <span class="step-text">{{ step }}</span>
+      <span class="toc-num">{{ i + 1 }}</span>
+      <span class="toc-text">{{ step }}</span>
     </button>
   </nav>
 </template>
 
 <script setup>
-import { Check } from 'lucide-vue-next'
-
-defineProps({
+const props = defineProps({
   activeIndex: { type: Number, default: 0 },
+  sectionIds: { type: Array, default: () => [] },
 })
-
-const emit = defineEmits(['update:activeIndex'])
 
 const steps = [
   'The Vision',
@@ -32,54 +27,64 @@ const steps = [
   'Traffic & Mobility',
   'The Path Forward',
 ]
+
+function scrollToSection(index) {
+  const id = props.sectionIds[index]
+  if (!id) return
+  const el = document.getElementById(id)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 </script>
 
 <style scoped>
-.story-progress {
-  background: var(--color-white);
-  border-bottom: 1px solid var(--color-border-lighter);
-  padding: 0 120px;
-  display: flex;
-  align-items: stretch;
+.story-toc {
   position: sticky;
-  top: calc(var(--banner-height) + var(--header-height));
-  z-index: 5;
+  top: calc(var(--banner-height) + var(--header-height) + 32px);
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 64px 24px 0;
 }
 
-.progress-step {
-  flex: 1;
-  padding: 16px 12px;
-  text-align: center;
+.toc-heading {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+
+.toc-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
   font-size: 13px;
   color: var(--color-text-muted);
   border: none;
-  border-bottom: 3px solid transparent;
   background: none;
   cursor: pointer;
   transition: all 0.15s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  border-left: 3px solid transparent;
+  text-align: left;
 }
 
-.progress-step:hover {
+.toc-item:hover {
   color: var(--color-darkest);
   background: var(--color-bg-card);
 }
 
-.progress-step.active {
+.toc-item.active {
   color: var(--color-teal);
-  border-bottom-color: var(--color-teal);
+  border-left-color: var(--color-teal);
   font-weight: 600;
 }
 
-.progress-step.completed {
-  color: var(--color-darkest);
-  border-bottom-color: #c0d8c4;
-}
-
-.step-num {
+.toc-num {
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -93,29 +98,14 @@ const steps = [
   color: var(--color-text-muted);
 }
 
-.progress-step.active .step-num {
+.toc-item.active .toc-num {
   background: var(--color-teal);
   color: var(--color-white);
 }
 
-.progress-step.completed .step-num {
-  background: #c0d8c4;
-  color: var(--color-dark);
-}
-
-@media (max-width: 767px) {
-  .story-progress {
-    padding: 0 16px;
-    overflow-x: auto;
-  }
-
-  .step-text {
+@media (max-width: 1023px) {
+  .story-toc {
     display: none;
-  }
-
-  .progress-step {
-    min-width: 48px;
-    padding: 12px 8px;
   }
 }
 </style>

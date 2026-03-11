@@ -100,6 +100,7 @@ const form = reactive({
   background: var(--color-bg);
   display: flex;
   flex-direction: column;
+  padding-top: var(--banner-height);
 }
 
 .register-header {
