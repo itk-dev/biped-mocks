@@ -9,6 +9,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Plain question mark icon in the FAQ page badge (replacing circle icon)
+- Expand all / Collapse all toggle buttons on the FAQ page
+- Discussion section (CommentsSection) on the Sol over Brabrand article page
+- Digital Twin page (`/digital-twin`) with VC Map iframe embed, fullscreen toggle, and usage instructions with FAQ link
+- Digital Twin route, sidebar navigation link with active state, and homepage feature card link
+- Section introduction headers on the homepage above Articles teasers and Explore feature cards
+
+### Fixed
+
+- Improved text contrast for `--color-text-light` (`#6a8a9e` → `#587a8d`) to meet WCAG AA 4.5:1 ratio
+
+### Changed
+
+- Removed "NEW FEATURE" badge and green border from Discussion section; constrained to content column width on the dataset page
+- Header: made Login the primary (filled) button and "Find out more" a subtle text link
+- Articles list page (`/articles`) with search, sort, and cards/list view toggle
+- Sol over Brabrand article page with digital twin iframe embed
+- FAQ article page with accordion sections
+- Video Guide article page with styled placeholder video blocks
+- Reusable breadcrumb component (`AppBreadcrumb`)
+- Composable (`useArticles`) with static articles array, search, and sort helpers
 - Animated SVG data visualization in the storytelling hero section with traveling dots along lines (right-aligned to avoid text overlap)
 - Mock energy balance forecast line graph in Chapter 1 showing production vs. consumption through 2032
 - Interactive SVG heatmap in Chapter 2 with inline labels inside bubbles, glow effect, and external title/legend
@@ -28,6 +49,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Storytelling and Dataset pages nested under `/articles/` with breadcrumb navigation
+- Sidebar navigation — replaced Data Catalog and Dashboards icons with single Articles icon
+- Homepage onboarding step 4 changed from "Find your use case" to "Video Guide" link
+- All internal links updated to use `/articles/...` paths
 - Replaced tabbed chapter navigation with scrollable page and sticky vertical TOC sidebar on the storytelling page
 - TOC highlights current section on scroll via IntersectionObserver and supports click-to-scroll
 - TOC sidebar hidden at tablet breakpoint (≤1023px) for single-column layout

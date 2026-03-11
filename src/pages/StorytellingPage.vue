@@ -1,5 +1,8 @@
 <template>
   <div class="storytelling-page">
+    <div class="breadcrumb-bar">
+      <AppBreadcrumb :crumbs="[{ label: 'Articles', to: '/articles' }]" current="Data Storytelling" />
+    </div>
     <StoryHero />
 
     <div class="story-body">
@@ -200,6 +203,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import AppBreadcrumb from '../components/shared/AppBreadcrumb.vue'
 import StoryHero from '../components/storytelling/StoryHero.vue'
 import StoryProgress from '../components/storytelling/StoryProgress.vue'
 import StorySection from '../components/storytelling/StorySection.vue'
@@ -307,6 +311,10 @@ const heatZones = [
 </script>
 
 <style scoped>
+.breadcrumb-bar {
+  padding: 24px 64px 0;
+}
+
 .story-body {
   display: grid;
   grid-template-columns: 1fr 260px;
@@ -465,6 +473,10 @@ const heatZones = [
 }
 
 @media (max-width: 767px) {
+  .breadcrumb-bar {
+    padding: 16px 24px 0;
+  }
+
   .data-source {
     flex-direction: column;
     align-items: flex-start;

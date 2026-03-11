@@ -100,23 +100,32 @@ defineEmits(['toggle-sidebar'])
   gap: 6px;
   padding: 6px 12px;
   border-radius: var(--radius-md);
-  background: var(--color-teal);
-  color: var(--color-white);
+  background: none;
+  color: var(--color-text-light);
   font-size: 14px;
   font-weight: 500;
+  transition: color 0.15s;
 }
 
 .info-btn:hover {
-  background: var(--color-mid);
+  color: var(--color-darkest);
 }
 
 .login-btn {
   font-size: 14px;
-  color: var(--color-darkest);
+  color: var(--color-white);
   font-weight: 600;
   display: flex;
   align-items: center;
   gap: 4px;
+  padding: 6px 16px;
+  border-radius: var(--radius-md);
+  background: var(--color-teal);
+  transition: background 0.15s;
+}
+
+.login-btn:hover {
+  background: var(--color-mid);
 }
 
 @media (max-width: 767px) {
