@@ -81,7 +81,7 @@
       <span><Calendar :size="14" :stroke-width="1.5" /> Published: February 2026</span>
       <span><User :size="14" :stroke-width="1.5" /> BIPED Consortium</span>
       <span><Clock :size="14" :stroke-width="1.5" /> 8 min read</span>
-      <router-link to="/dataset/brabrand-solar" class="datasets-link"><BarChart3 :size="14" :stroke-width="1.5" /> 6 datasets referenced</router-link>
+      <router-link to="/articles/brabrand-solar" class="datasets-link"><BarChart3 :size="14" :stroke-width="1.5" /> 6 datasets referenced</router-link>
     </div>
   </section>
 </template>

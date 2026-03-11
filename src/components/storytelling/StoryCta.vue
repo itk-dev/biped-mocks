@@ -3,7 +3,7 @@
     <h2>Explore the data behind this story</h2>
     <p>All datasets referenced in this story are freely available in the BIPED Data Catalog. Dive deeper into the numbers.</p>
     <div class="cta-buttons">
-      <router-link to="/dataset/brabrand-solar" class="btn-cta-primary">Open in Data Catalog</router-link>
+      <router-link to="/articles/brabrand-solar" class="btn-cta-primary">Open in Data Catalog</router-link>
       <button class="btn-cta-secondary">View in Digital Twin</button>
     </div>
   </section>

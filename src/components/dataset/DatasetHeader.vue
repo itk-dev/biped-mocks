@@ -1,8 +1,6 @@
 <template>
   <div class="dataset-header">
-    <div class="breadcrumb">
-      <router-link to="/">Data Catalog</router-link> › {{ title }}
-    </div>
+    <AppBreadcrumb :crumbs="[{ label: 'Articles', to: '/articles' }]" :current="title" />
     <div class="publisher"><Building2 :size="14" :stroke-width="1.5" /> {{ publisher }}</div>
     <h1>{{ title }}</h1>
     <div class="tags">
@@ -19,6 +17,7 @@
 
 <script setup>
 import { Building2, Calendar, Download, Eye, MessageCircle } from 'lucide-vue-next'
+import AppBreadcrumb from '../shared/AppBreadcrumb.vue'
 
 defineProps({
   title: String,
@@ -38,20 +37,6 @@ function scrollToDiscussion() {
 <style scoped>
 .dataset-header {
   margin-bottom: 32px;
-}
-
-.breadcrumb {
-  font-size: 13px;
-  color: var(--color-text-muted);
-  margin-bottom: 24px;
-}
-
-.breadcrumb a {
-  color: var(--color-teal);
-}
-
-.breadcrumb a:hover {
-  text-decoration: underline;
 }
 
 .publisher {

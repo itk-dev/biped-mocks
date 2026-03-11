@@ -1,8 +1,6 @@
 <template>
   <div id="discussion" class="comments-section">
     <div class="comments-card">
-      <div class="new-badge">NEW FEATURE</div>
-
       <div class="comments-header">
         <h3><MessageCircle :size="18" :stroke-width="1.5" /> Discussion <span class="comment-count">{{ comments.length }} comments</span></h3>
         <select class="sort-select">
@@ -87,7 +85,7 @@ function addComment(text) {
 
 <style scoped>
 .comments-section {
-  grid-column: 1 / -1;
+  grid-column: 1;
 }
 
 .comments-card {
@@ -95,21 +93,7 @@ function addComment(text) {
   border-radius: var(--radius-lg);
   padding: 28px;
   box-shadow: var(--shadow-card);
-  border: 2px solid var(--color-green);
-  position: relative;
-}
-
-.new-badge {
-  position: absolute;
-  top: -10px;
-  right: 20px;
-  background: var(--color-teal);
-  color: var(--color-white);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 3px 12px;
-  border-radius: var(--radius-lg);
-  letter-spacing: 0.5px;
+  border: 1px solid var(--color-border-lighter);
 }
 
 .comments-header {

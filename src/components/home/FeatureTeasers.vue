@@ -1,6 +1,6 @@
 <template>
   <section class="teasers">
-    <router-link to="/storytelling" class="teaser-card">
+    <router-link to="/articles/storytelling" class="teaser-card">
       <div class="teaser-preview storytelling-preview">
         <div class="preview-label"><BookOpen :size="14" :stroke-width="1.5" /> Data Story</div>
         <div class="preview-title">Aarhus on the Road to Positive Energy</div>
@@ -11,7 +11,7 @@
         <span class="teaser-link">Read the story →</span>
       </div>
     </router-link>
-    <router-link to="/dataset/brabrand-solar" class="teaser-card">
+    <router-link to="/articles/brabrand-solar" class="teaser-card">
       <div class="teaser-preview dataset-preview">
         <div class="preview-tags">
           <span class="mini-tag">Energy</span>

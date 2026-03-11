@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-import { Hand, Globe, Database, LayoutDashboard, Lightbulb } from 'lucide-vue-next'
+import { Hand, Globe, Database, LayoutDashboard, Video } from 'lucide-vue-next'
 
 const steps = [
   {
@@ -40,22 +40,22 @@ const steps = [
     title: 'Browse the Data Catalog',
     description: 'Search and access open datasets, including solar irradiance and photovoltaic performance data.',
     linkText: 'Explore Solar Data',
-    to: '/dataset/brabrand-solar',
+    to: '/articles/brabrand-solar',
     icon: Database,
   },
   {
     title: 'View Dashboards',
     description: 'Interactive overviews of key solar energy metrics and district performance indicators.',
     linkText: 'See Dashboards',
-    to: '/storytelling',
+    to: '/articles/storytelling',
     icon: LayoutDashboard,
   },
   {
-    title: 'Find your use case',
-    description: 'Discover how BIPED solar data supports research, planning, and community energy projects.',
-    linkText: 'Get Started',
-    href: '#',
-    icon: Lightbulb,
+    title: 'Watch the Video Guide',
+    description: 'Video walkthroughs of the BIPED platform, the digital twin, and the data catalog.',
+    linkText: 'Watch Videos',
+    to: '/articles/video-guide',
+    icon: Video,
   },
 ]
 </script>
