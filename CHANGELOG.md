@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Changed
 
 - Removed "NEW FEATURE" badge and green border from Discussion section; constrained to content column width on the dataset page
+- Header: made Login the primary (filled) button and "Find out more" a subtle text link
 - Articles list page (`/articles`) with search, sort, and cards/list view toggle
 - Sol over Brabrand article page with digital twin iframe embed
 - FAQ article page with accordion sections
