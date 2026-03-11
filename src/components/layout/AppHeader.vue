@@ -15,7 +15,7 @@
     </div>
     <div class="header-right">
       <a class="info-btn" href="#">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <Info :size="16" :stroke-width="2" />
         <span class="info-text">Find out more</span>
       </a>
       <router-link class="login-btn" to="/register">
@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import { ArrowRight } from 'lucide-vue-next'
+import { ArrowRight, Info } from 'lucide-vue-next'
 
 defineEmits(['toggle-sidebar'])
 </script>

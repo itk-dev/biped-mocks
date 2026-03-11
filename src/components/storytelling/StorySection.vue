@@ -1,5 +1,5 @@
 <template>
-  <section class="story-section" :class="{ alt: alt }">
+  <section :id="id" class="story-section" :class="{ alt: alt }">
     <span v-if="label" class="section-label">{{ label }}</span>
     <h2 v-if="title">{{ title }}</h2>
     <p v-if="narrative" class="narrative">{{ narrative }}</p>
@@ -9,6 +9,7 @@
 
 <script setup>
 defineProps({
+  id: String,
   label: String,
   title: String,
   narrative: String,
@@ -18,7 +19,8 @@ defineProps({
 
 <style scoped>
 .story-section {
-  padding: 64px 120px;
+  padding: 64px 40px 64px 120px;
+  scroll-margin-top: calc(var(--banner-height) + var(--header-height) + 20px);
 }
 
 .story-section.alt {
@@ -48,6 +50,12 @@ defineProps({
   line-height: 1.8;
   max-width: 700px;
   margin-bottom: 32px;
+}
+
+@media (max-width: 1023px) {
+  .story-section {
+    padding: 64px 120px;
+  }
 }
 
 @media (max-width: 767px) {
