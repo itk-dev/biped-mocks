@@ -54,8 +54,6 @@ onUnmounted(() => {
 
 <style scoped>
 .twin-content {
-  max-width: 1120px;
-  margin: 0 auto;
   padding: 32px 64px 64px;
 }
 
@@ -101,8 +99,8 @@ h1 {
 
 .fullscreen-btn {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 16px;
+  right: 16px;
   z-index: 2;
   display: inline-flex;
   align-items: center;

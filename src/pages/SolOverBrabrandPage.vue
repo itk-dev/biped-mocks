@@ -16,6 +16,11 @@
         <p>The initiative operates at the intersection of urban planning and digital innovation. Through workshops, public datasets, and interactive tools, Sol over Brabrand empowers citizens to understand their district's energy profile and participate in shaping its sustainable future.</p>
       </section>
 
+      <blockquote class="chairman-quote">
+        <p>"Sol over Brabrand shows what happens when citizens, researchers, and city planners come together around a shared vision. This is not just about solar panels — it is about building a community that takes ownership of its energy future."</p>
+        <cite>— Chairman Name, Brabrand Community Board</cite>
+      </blockquote>
+
       <section class="prose">
         <h2>The Digital Twin</h2>
         <p>At the heart of the project is a digital twin — a detailed 3D replica of the Brabrand district that integrates building geometry, solar irradiance data, and energy consumption records. The interactive model below lets you explore rooftops, view estimated photovoltaic potential, and understand how sunlight interacts with the built environment throughout the year.</p>
@@ -27,6 +32,7 @@
             allow="fullscreen"
           ></iframe>
         </div>
+        <p class="iframe-note">The model loads with the solar irradiance module enabled and all editing tools hidden for a cleaner viewing experience.</p>
       </section>
 
       <section class="prose">
@@ -112,14 +118,47 @@ h1 {
   margin-bottom: 16px;
 }
 
+.chairman-quote {
+  border-left: 4px solid var(--color-teal);
+  margin: 0 0 40px;
+  padding: 24px 32px;
+  background: var(--color-bg-subtle, #f4f8fa);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.chairman-quote p {
+  font-size: 18px;
+  font-style: italic;
+  color: var(--color-darkest);
+  line-height: 1.7;
+  margin: 0 0 12px;
+}
+
+.chairman-quote cite {
+  font-size: 14px;
+  font-style: normal;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
 .iframe-wrapper {
   position: relative;
-  width: 100%;
+  width: calc(100% + 120px);
+  margin-left: -60px;
+  margin-right: -60px;
   padding-bottom: 56.25%;
-  margin: 24px 0;
+  margin-top: 24px;
+  margin-bottom: 24px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--color-border-lighter);
+}
+
+.iframe-note {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+  line-height: 1.5;
 }
 
 .twin-iframe {
@@ -143,6 +182,16 @@ h1 {
   .article-meta {
     flex-direction: column;
     gap: 6px;
+  }
+
+  .iframe-wrapper {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .chairman-quote {
+    padding: 16px 20px;
   }
 }
 </style>
