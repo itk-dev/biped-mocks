@@ -69,7 +69,7 @@ h3 {
 .map-container {
   border-radius: var(--radius-md);
   overflow: hidden;
-  height: 180px;
+  height: 280px;
 }
 
 .map-iframe {

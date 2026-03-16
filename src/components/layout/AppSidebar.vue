@@ -9,9 +9,6 @@
     <router-link to="/articles" class="sidebar-icon" :class="{ active: isArticlesActive }" aria-label="Articles">
       <svg viewBox="0 0 32 32" fill="none"><path d="M6 8h20M6 13h20M6 18h14M6 23h10" :stroke="isArticlesActive ? '#002d3d' : '#667F93'" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </router-link>
-    <div class="sidebar-icon" aria-label="Organisation Sites">
-      <svg viewBox="0 0 27 27" fill="none"><path d="M24.4 21.5h-1.6V10.2a2.4 2.4 0 00-2.4-2.4h-5.7V3.7a2.4 2.4 0 00-1.2-2.1 2.4 2.4 0 00-2.4.3L4.1 7.7a2.4 2.4 0 00-1.1 2v11.8H1.7a.8.8 0 000 1.6h22.7a.8.8 0 000-1.6zm-3.2-11.3v11.3h-6.5V10.2h6.5zM5 9.1l8.1-5.4v17.8H5V9.1z" fill="#667F93"/></svg>
-    </div>
   </nav>
 </template>
 

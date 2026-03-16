@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Chairman quote blockquote section on Sol over Brabrand article (placeholder text)
+- Informational note below the iframe on Sol over Brabrand article
 - Plain question mark icon in the FAQ page badge (replacing circle icon)
 - Expand all / Collapse all toggle buttons on the FAQ page
 - Discussion section (CommentsSection) on the Sol over Brabrand article page
@@ -16,8 +18,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Digital Twin route, sidebar navigation link with active state, and homepage feature card link
 - Section introduction headers on the homepage above Articles teasers and Explore feature cards
 
+### Changed
+
+- Digital Twin page now uses full available width instead of max-width constraint
+- Sol over Brabrand iframe breaks out wider than the article text column for more visual impact
+- Increased map height from 180px to 280px on the Brabrand Solar dataset page
+
 ### Fixed
 
+- Fullscreen button alignment on Digital Twin page (proper inset from iframe border)
+- Removed non-functional "Organisation Sites" sidebar icon
 - Improved text contrast for `--color-text-light` (`#6a8a9e` → `#587a8d`) to meet WCAG AA 4.5:1 ratio
 
 ### Changed
