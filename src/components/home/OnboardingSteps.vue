@@ -1,7 +1,7 @@
 <template>
   <section class="onboarding">
     <div class="onboarding-header">
-      <div class="onboarding-icon"><Hand :size="28" :stroke-width="1.5" /></div>
+      <div class="onboarding-icon"><Hand :size="28" :stroke-width="1.5" :class="{ waving }" /></div>
       <h2>Welcome to BIPED Civora</h2>
       <p class="subtitle">Let us show you around! Based on your interests, these steps will help you discover the platform's key features.</p>
     </div>
@@ -26,7 +26,16 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
 import { Hand, Globe, Database, LayoutDashboard, Video } from 'lucide-vue-next'
+
+const waving = ref(false)
+
+onMounted(() => {
+  requestAnimationFrame(() => {
+    waving.value = true
+  })
+})
 
 const steps = [
   {
@@ -83,6 +92,21 @@ const steps = [
   color: var(--color-white);
 }
 
+.onboarding-icon .waving {
+  transform-origin: 70% 80%;
+  animation: wave 0.6s ease-in-out;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-8deg); }
+  45% { transform: rotate(10deg); }
+  60% { transform: rotate(-4deg); }
+  75% { transform: rotate(6deg); }
+  100% { transform: rotate(0deg); }
+}
+
 .onboarding-header h2 {
   font-size: 24px;
   color: var(--color-darkest);
@@ -132,6 +156,20 @@ const steps = [
   margin: 0 auto 12px;
   background: var(--color-teal);
   color: var(--color-white);
+  border: 1px solid var(--color-teal);
+  transition: transform 0.4s ease, background 0.4s ease, color 0.4s ease;
+}
+
+.step-card:hover .step-number {
+  animation: flip-invert 0.4s ease forwards;
+  background: var(--color-white);
+  color: var(--color-teal);
+}
+
+@keyframes flip-invert {
+  0% { transform: rotateY(0deg); }
+  50% { transform: rotateY(90deg); }
+  100% { transform: rotateY(180deg); }
 }
 
 .step-card h4 {
