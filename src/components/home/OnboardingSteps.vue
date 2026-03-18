@@ -33,7 +33,7 @@ const steps = [
     title: 'Explore the Digital Twin',
     description: 'Navigate the 3D virtual model of Aarhus and discover solar energy data across the city.',
     linkText: 'View Solar in the Twin',
-    href: '#',
+    to: '/digital-twin',
     icon: Globe,
   },
   {
